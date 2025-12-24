@@ -42,18 +42,16 @@ internal object PluginManager {
                                     }.toMutableList().apply {
                                         find {
                                             it == pluginClass
-                                        }?.let {
-                                            plugins.put(
-                                                key = (classLoader.loadClass(it)
-                                                    .getDeclaredConstructor()
-                                                    .newInstance() as Plugin)
-                                                    .apply {
-                                                        CoroutineScope(Default + SupervisorJob()).launch {
-                                                            onRegister()
-                                                            onCompleted()
-                                                        }
-                                                    },
-                                                value = privateDirectory.apply {
+                                        }?.also {
+                                            plugins[(classLoader.loadClass(it)
+                                                .getDeclaredConstructor()
+                                                .newInstance() as Plugin)
+                                                .apply {
+                                                    CoroutineScope(Default + SupervisorJob()).launch {
+                                                        onRegister()
+                                                        onCompleted()
+                                                    }
+                                                }] = privateDirectory.apply {
                                                     if (!exists())
                                                         mkdir()
                                                 }.let { parentFile ->
@@ -66,7 +64,6 @@ internal object PluginManager {
                                                         }
                                                     }
                                                 }
-                                            )
                                         } ?: throw IllegalStateException("Plugin $pluginClass not found")
 
                                         remove(pluginClass)
