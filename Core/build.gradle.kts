@@ -13,11 +13,11 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
-    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json
-    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-    compileOnly("ch.qos.logback:logback-classic:1.5.22")
+    api("ch.qos.logback:logback-classic:1.5.22")
 
 
     api(project(":OneBot"))
