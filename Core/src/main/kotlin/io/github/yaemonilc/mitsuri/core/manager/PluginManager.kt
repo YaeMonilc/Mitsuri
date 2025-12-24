@@ -27,7 +27,7 @@ internal object PluginManager {
                     .asSequence()
                     .toList().let { entities ->
                         entities.find {
-                            it.name == "plugin-config"
+                            it.name == "info.plugin"
                         }?.let { configEntity ->
                             classLoader.getResourceAsStream(configEntity.name)
                                 .bufferedReader()
