@@ -5,7 +5,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import kotlin.reflect.KClass
 
-abstract class Plugin internal constructor() {
+abstract class Plugin {
     companion object {
         fun getInstance(
             klass: KClass<out Plugin>
